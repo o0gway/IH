@@ -18,7 +18,16 @@ def parse(query: str) -> dict:
 
 
 def parse_cookie(query: str) -> dict:
-    pass
+    result = {}
+    if query != "":
+        datalist = query.split(";")
+        for i in range(len(datalist)):
+            if datalist[i] != "":
+                element = str(datalist[i]).split("=", 1)
+                result[element[0]] = element[1]
+        return result
+    else:
+        return result
 
 
 if __name__ == '__main__':
