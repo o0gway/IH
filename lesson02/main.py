@@ -1,5 +1,20 @@
+from urllib.parse import urlparse, ParseResult
+
+
 def parse(query: str) -> dict:
-    pass
+    item = urlparse(query)
+    result = {}
+    if item[4] != "":
+        data = item[4]
+        datalist = data.split("&")
+
+        for i in range(len(datalist)):
+            if datalist[i] != "":
+                element = str(datalist[i]).split("=")
+                result[element[0]] = element[1]
+        return result
+    else:
+        return result
 
 
 def parse_cookie(query: str) -> dict:
